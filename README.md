@@ -39,3 +39,35 @@ O Pipeline nesse caso é simples, onde ele lê o arquivo CSV, faz a separação 
 O módulo 'CleanData.py' executa via Datafow 3 queries (1 para cada tabela) fazendo o tratamento dos campos e deixando as tabelas prontas para serem analisadas.
 
 As queries se encontram no repositório: query_normatiza_component.sql , query_normatiza_price_quote.sql e query_normatiza_bill_material.sql
+
+### Painel Data Studio
+
+Através da query 'query_insumo_data_studio.sql' executada no BigQuery é criada uma visão dos custos de cotação versus o período, para assim conseguirmos identificar, inicialmente, quais são os períodos que os custos estão alta e tentar, de alguma forma, diminuir esses valores caso não esteja ocorrendo venda por conta do alto custo, ou fomentar as vendas nesse período, caso o resultado seja positivo.
+
+O painel está no arquivo 'Relatório Case Dotz.PNG' .
+
+
+### Executando o programa
+
+A execução está divida em 3 etapas:
+
+1 - Instalação das dependências do Dataflow, através da execução dos comandos abaixo:
+```
+- pip install apache-beam
+- pip install apache-beam[gcp]
+```
+2 - Executar o step de ingestão de dados IngestData.py
+* O arquivo 'IngestProcessDataFlow.PNG' representa os pipes do Dataflow dessa etapa
+
+3 - Executar o step de limpeza dos dados CleanData.py
+* O arquivo 'CleanProcessDataFlow.PNG' representa os pipes do Dataflow dessa etapa
+
+4 - Executar a query 'query_insumo_data_studio.sql' que dará insumo ao painél que atualizará automaticamente
+* Sobre esse step, não vi a necessidade de inserir no Dataflow ou outra opção, dada a simplicadade.
+
+
+### Melhorias
+
+Vejo muitas possibilidades de melhorias nesse processo de ingestão, desde o modelo conceitual até o painel no Data Studio, porém, o tempo foi muito curto.
+
+Creio que seria mais interessante "destrinchar" o modelo conceitual, entender mais das regras, e com certeza criaríamos mais tabelas 
