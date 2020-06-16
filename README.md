@@ -38,7 +38,4 @@ O Pipeline nesse caso é simples, onde ele lê o arquivo CSV, faz a separação 
 
 O módulo 'CleanData.py' executa via Datafow 3 queries (1 para cada tabela) fazendo o tratamento dos campos e deixando as tabelas prontas para serem analisadas.
 
-As queries se encontram no repositório:
-query_normatiza_component.sql
-query_normatiza_price_quote.sql
-query_normatiza_bill_material.sql
+As queries se encontram no repositório: query_normatiza_component.sql , query_normatiza_price_quote.sql e query_normatiza_bill_material.sql
