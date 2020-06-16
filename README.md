@@ -2,9 +2,6 @@
 
 Abaixo segue a explicação sobre como foi desenvolvido o teste solicitado, a criação da Arquitetura e do Modelo Conceitual.
 
-## Getting Started
-
-
 ### Modelo Conceitual
 Pra definir o modelo conceitual, optei por trabalhar com os 3 arquivos do caso transformando-os em tabela e fazendo a ligação entre elas.
 
@@ -27,3 +24,21 @@ O Bigquery foi escolhido como nosso Datawarehouse, pois essa é a forte indicaç
 Como opção de ferramente de BI, usaremos o Data Studio, onde serão criados relatórios gerenciais para acompanhamento de vendas e aceita fontes de dados como Mysql, BigQuery, Cloud Sql, Google Sheets e Google Analytics.
 
 O arquivo 'Arquitetura Cloud.PNG' representa o desenho da arquitetura.
+
+
+### Ingestão dos Dados
+
+O programa é dividido em 2 etapas , a primeira se refere ao módulo 'IngestData.py' e a segunda ao módulo 'CleanData.py'.
+
+O módulo 'IngestData.py' realiza todas os imports necessários e passa os argumentos que o Dataflow necessita para execução.
+
+Há a criação de uma função que lê o arquivo CSV e o separada através do delimitador ',' e cria a linha a ser processada junto com o head que também é passado na função.
+
+O Pipeline nesse caso é simples, onde ele lê o arquivo CSV, faz a separação das colunas através do delimitador e grava uma tabela no BigQuery. Faz esse processo para os 3 arquivos.
+
+O módulo 'CleanData.py' executa via Datafow 3 queries (1 para cada tabela) fazendo o tratamento dos campos e deixando as tabelas prontas para serem analisadas.
+
+As queries se encontram no repositório:
+query_normatiza_component.sql
+query_normatiza_price_quote.sql
+query_normatiza_bill_material.sql
