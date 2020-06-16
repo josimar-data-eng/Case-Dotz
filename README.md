@@ -3,6 +3,7 @@
 Abaixo segue a explicação sobre como foi desenvolvido o teste solicitado, a criação da Arquitetura e do Modelo Conceitual.
 
 ### Modelo Conceitual
+
 Pra definir o modelo conceitual, optei por trabalhar com os 3 arquivos do caso transformando-os em tabela e fazendo a ligação entre elas.
 
 Apesar de perceber que os arquivos não estavam normalizados para serem representados diretamente como tabelas, dado que haviam problema relacionados às chaves, optei dessa forma pois a especificação estava um pouco geral, faltando algumas informações que pudessem otimizar o modelo conceitual, e o tempo curto.
@@ -68,6 +69,12 @@ A execução está divida em 3 etapas:
 
 ### Melhorias
 
-Vejo muitas possibilidades de melhorias nesse processo de ingestão, desde o modelo conceitual até o painel no Data Studio, porém, o tempo foi muito curto.
+Vejo muitas possibilidades de melhorias nesse processo de ingestão, desde o modelo conceitual até o painel no Data Studio, mas com o tempo curto, não foi possível!
 
-Creio que seria mais interessante "destrinchar" o modelo conceitual, entender mais das regras, e com certeza criaríamos mais tabelas 
+Creio que seria mais interessante "destrinchar" o modelo conceitual, entender mais das regras, e com certeza criar mais tabelas para que o entendimento do negócio ficasse mais estruturado.
+
+Poderíamos criar um processo transacional via Cloud Sql e armazenar as tabelas lá dentro, criando conexão diretas com Dataflow e  BigQuery , deixando o fluxo mais limpo e estruturado, saindo de um ambiente transacional para o Analítico.
+
+Sobre o programa do Dataflow, poderíamos parametrizar mais, deixando o código menor e mais limpo.
+
+Pra finalizar, informo que optei por não focar 100% em apenas um step do processo, e sim fazê-lo por completo (de ponta a ponta) para mostrar que há o conhecimento em todas as camadas.
